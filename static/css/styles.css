@@ -1,0 +1,136 @@
+.page-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid grey;
+}
+.page-content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.menu-icon {
+  display: none;
+}
+.header-wrapper .header-logo {
+  display: flex;
+  flex-grow: 100;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.header-wrapper .header-navs {
+  flex-grow: 100;
+  flex-wrap: wrap;
+}
+.logo {
+  width: 25%;
+}
+.header-navs {
+  flex: 1;
+}
+.header-navs ul {
+  display: flex;
+  padding-top: 1em;
+  list-style-type: none;
+  text-align: center;
+  height: 100%;
+}
+.header-navs ul a {
+  font-family: sakkal;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #474970;
+  flex-grow: 30;
+  flex-basis: 0;
+  margin: 0 0.5em;
+  border: 1px solid #b4b5cf;
+  border-radius: 3px;
+  background-color: #d9dae7;
+}
+.header-navs ul a:hover {
+  color: #5b5d8f;
+  font-size: 1.55em;
+}
+@font-face {
+  font-family: sakkal;
+  src: url(../fonts/majallab.ttf);
+}
+@media all and (max-device-width: 600px) {
+  .header-wrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .header-wrapper .header-navs {
+    visibility: hidden;
+  }
+  .header-wrapper .menu-icon {
+    display: flex;
+  }
+  .logo {
+    width: 90%;
+  }
+}
+.card {
+  display: flex;
+}
+.card-header {
+  display: flex;
+  flex-grow: 100;
+  border: 1px solid #b4b5cf;
+  border-radius: 3px;
+  margin: 0.3em 0.3em;
+  padding: 0.3em 0.3em;
+}
+.card-header a {
+  margin-left: 0.8em;
+  font-family: sakkal;
+  font-variant: small-caps;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+.project {
+  display: inline-flex;
+  position: relative;
+  width: 33%;
+  padding-bottom: 33% ;
+  /* % of width, defines aspect ratio*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 2px solid #b4b5cf;
+}
+.footer {
+  content: '';
+  width: 70%;
+  background-color: #7578a8;
+  margin: 1em 0 0.3em 0;
+}
+.footer p {
+  visibility: hidden;
+}
+html,
+body,
+ul {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
