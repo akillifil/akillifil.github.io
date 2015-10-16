@@ -1,19 +1,9 @@
 // main : ./main.less
 
 @media all and (max-device-width : 600px) {
-  .header-wrapper{
-    flex-direction: row;
-    justify-content: flex-start;
-    .header-navs{
-      visibility: hidden;
-    }
-    .menu-icon{
-      display: flex;
-    }
-  }
-
-  .logo{
-    width: 90%;
+  .container::before{
+    content: "";
+    margin-bottom: 10%;
   }
 
 }

@@ -1,24 +1,13 @@
 // main : ./main.less
 
-.page-wrapper{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
+#motion{
+  background-image: url(/static/img/motion.gif);
+  padding-bottom: 57% ; /* % of width, defines aspect ratio*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-.header-wrapper{
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  padding-bottom: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid grey;
-}
-
-.page-content {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-}
+  .container::before{
+    content: "";
+    margin-bottom: 5%;
+  }
