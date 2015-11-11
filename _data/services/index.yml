@@ -1,0 +1,119 @@
+- title : Web Tasarimi
+  n : 1
+  orientation : horizontal
+  rotation1 : 20
+  rotation2 : 30
+  scale1 : 1
+  scale2 : 3
+  bg-color : '#ff4500'
+  text-color : '#fff'
+  icon-color : '#fff'
+  deco-border : '#fff'
+  deco-shadow : #'inset 0 0 0 10px #fff'
+  block-font : "Bookman Old Style"
+  block-icon : \201C
+  block-color : '#fff'
+  data-icon :
+    font-family : "WebDev"
+    content : \e03e
+    color : '#fff'
+  h2 : Web Design
+  p: Müşterileinize bir tık kadar yakın olmaya ne dersiniz? Veya sizi olduğunuz gibi anlatan kişisel bir websitesine? Tüm dünyaya duyurmak istediğiniz bir projeniz mi var yoksa? Ne olursa olsun bir websitesine ihtiyacınız var, bunu biliyorsunuz. AkıllıFil sizin için burada...
+  cite : AkıllıFil Web Ajansı
+  a: '#'
+
+- title : Mobil Uygulama
+  n : 2
+  orientation : horizontal
+  rotation1 : 55
+  rotation2 : 30
+  scale1 : 1
+  scale2 : 3
+  bg-color : '#ffaa00'
+  text-color : '#fff'
+  icon-color : '#fff'
+  block-font : "Bookman Old Style"
+  block-icon : \201C
+  block-color : '#fff'
+  deco-border : '#fff'
+  deco-shadow : #inset 0 0 0 10px #f7f7f7
+  data-icon :
+    font-family : "WebDev"
+    content : \e07d
+    color : '#fff '
+  h2 : Web Design
+  p: Gelişen tenoloji ile birlikte mobilize olmak, ürünlerinizi veya hizmetlerinizi müşterilerinize daha kolay ulaştırmak gerenktiğinde onlara ceplerindeymişcesine yakın olmak için mobil dünyada da var olmak gerekli diye mi düşünüyorsunuz? AkıllıFil sizin için burada...
+  cite : AkıllıFil Web Ajansı
+  a: '#'
+
+- title : Yazılım
+  n : 3
+  orientation : horizontal
+  rotation1 : -15
+  rotation2 : 50
+  scale1 : 1
+  scale2 : 3
+  bg-color : '#111'
+  text-color : '#fff'
+  icon-color : '#fff'
+  block-font : "Bookman Old Style"
+  block-icon : \201C
+  block-color : '#fff'
+  deco-border : '#fff'
+  deco-shadow : 'inset 0 0 0 0px #f7f7f7'
+  data-icon :
+    font-family : "WebDev"
+    content : \e025
+    color : '#ddd '
+  h2 : Web Design
+  p:  İster iş gücünden olduğu kadar zamandan da tasarruf sağlayacak, kaynaklarınızı daha verimli ve daha hızlı kullanmanıza yardımcı olacak bir ERP sistemine, ister işlerinizi daha kolay ve seri bir şekilde halledebileceğiniz bir otomasyon sistemine ihtiyacınız olsun, AkıllıFil sizin için burada...
+  cite : AkıllıFil Web Ajansı
+  a: '#'
+
+- title : Grafik Tasarim
+  n : 4
+  orientation : horizontal
+  rotation1 : 85
+  rotation2 : 30
+  scale1 : 1
+  scale2 : 3
+  bg-color : '#aaabcf'
+  text-color : '#fff'
+  icon-color : '#fff'
+  block-font : "Bookman Old Style"
+  block-icon : \201C
+  block-color : '#fff'
+  deco-border : '#fff'
+  deco-shadow : #inset 0 0 0 10px #f7f7f7
+  data-icon :
+    font-family : "WebDev"
+    content : \e060
+    color : '#ddd '
+  h2 : Web Design
+  p: Logonuz sizi anlatmıyor mu? Bastırdığınız katalog ve broşürlerin tasarımları istediğinizi anlatmakta yetersiz mi kalıyor? Endişelenmeyin! AkıllıFil sizin için burada...
+  cite : AkıllıFil Web Ajansı
+  a: '#'
+
+- title : E-Reklam
+  n : 5
+  orientation : horizontal
+  rotation1 : -115
+  rotation2 : 30
+  scale1 : 1
+  scale2 : 3
+  bg-color : '#ffaaaa'
+  text-color : '#fff'
+  icon-color : '#fff'
+  block-font : "Bookman Old Style"
+  block-icon : \201C
+  block-color : '#fff'
+  deco-border : '#fff'
+  deco-shadow : #inset 0 0 0 10px #f7f7f7
+  data-icon :
+    font-family : "WebDev"
+    content : \e0c9
+    color : '#ddd '
+  h2 : Web Design
+  p: İnsanlara sanal dünyada da ulaşabileceğiniz, reklam kampanyalarınızı kolaylıkla oluşturup yönetebileceğiniz, elde ettiğiniz verileri anında monitör edip en doğru şekilde analiz ve raporlamasını yapabileceğiniz, internette de rakiplerinizden bir adım önde olabileceğiniz E-Reklam çözümlerimiz ile... AkıllıFil sizin için burada...
+  cite : AkıllıFil Web Ajansı
+  a: '#'

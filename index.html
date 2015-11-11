@@ -1,25 +1,120 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Akilli Fil - Coming Soon !!!</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Akilli Fil Bilisim Hizmetleri - Web Tasarim - Web Yazilim - Mobil Uygulamalar - SEO Calismalari - Internet Reklamciligi - Kurumsal Kimlik Calismalari - Logo Tasarim - Banner Tasarim - Brosur Tasarim - Kartvizit ve E-Kart Tasarimi">
+---
+layout: default
+---
 
-    <link rel="shortcut icon" href="/static/img/favicon.ico">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/static/css/styles.css" media="screen" title="no title" charset="utf-8">
-  </head>
-  <body>
-    <div class="container">
-      <div id="motion" class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+  <div class="container index-slider">
+
+    <!-- Codrops top bar -->
+          <div id="slider" class="sl-slider-wrapper">
+
+      <div class="sl-slider">
+{% for slide in site.data.services.index %}
+        <div class="sl-slide bg-{{slide.n}}" data-orientation="{{ slide.orientation }}" data-slice1-rotation="{{ slide.rotation1 }}" data-slice2-rotation="{{ slide.rotation2 }}" data-slice1-scale="{{ slide.scale1 }}" data-slice2-scale="{{ slide.scale2 }}">
+          <div class="sl-slide-inner">
+            <div class="deco" data-icon="H"></div>
+            <h2>{{ slide.title }}</h2>
+            <blockquote><p>{{ slide.p }}</p><cite>{{ slide.cite }}</cite></blockquote>
+          </div>
+        </div>
+{% endfor %}
+
+      <nav id="nav-arrows" class="nav-arrows">
+        <span class="nav-arrow-prev">Previous</span>
+        <span class="nav-arrow-next">Next</span>
+      </nav>
+
+      <nav id="nav-dots" class="nav-dots">
+        <span class="nav-dot-current"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </nav>
+
+    </div><!-- /slider-wrapper -->
 
       </div>
+{% include scripts.html %}
+  <script type="text/javascript">
+    $(function() {
 
-    </div>
+      var Page = (function() {
 
-    <script src="/static/js/jquery.min.js" charset="utf-8"></script>
-    <script src="/static/js/bootstrap.min.js" charset="utf-8"></script>
-  </body>
-</html>
+        var $navArrows = $( '#nav-arrows' ),
+          $nav = $( '#nav-dots > span' ),
+          slitslider = $( '#slider' ).slitslider( {
+            onBeforeChange : function( slide, pos ) {
+
+              $nav.removeClass( 'nav-dot-current' );
+              $nav.eq( pos ).addClass( 'nav-dot-current' );
+
+            }
+          } ),
+
+          init = function() {
+
+            initEvents();
+
+          },
+          initEvents = function() {
+
+            // add navigation events
+            $navArrows.children( ':last' ).on( 'click', function() {
+
+              slitslider.next();
+              return false;
+
+            } );
+
+            $navArrows.children( ':first' ).on( 'click', function() {
+
+              slitslider.previous();
+              return false;
+
+            } );
+
+            $nav.each( function( i ) {
+
+              $( this ).on( 'click', function( event ) {
+
+                var $dot = $( this );
+
+                if( !slitslider.isActive() ) {
+
+                  $nav.removeClass( 'nav-dot-current' );
+                  $dot.addClass( 'nav-dot-current' );
+
+                }
+
+                slitslider.jump( i + 1 );
+                return false;
+
+              } );
+
+            } );
+
+          };
+
+          return { init : init };
+
+      })();
+
+      Page.init();
+
+      /**
+       * Notes:
+       *
+       * example how to add items:
+       */
+
+      /*
+
+      var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+
+      // call the plugin's add method
+      ss.add($items);
+
+      */
+
+    });
+  </script>
