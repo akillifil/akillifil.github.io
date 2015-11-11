@@ -244,7 +244,10 @@
 }
 
 .index-slider .bg-{{ slide.n }} blockquote > cite{
-	font-size: 1.3em;
+	font-size: 1.7em;
+}
+.index-slider .bg-{{ slide.n }} blockquote{
+	font-size: 1em;
 }
 {%endfor%}
 
