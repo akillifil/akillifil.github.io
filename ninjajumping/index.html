@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+		<title>Game Development</title>
+
+		<style>
+		  body {
+				position: static;
+		    padding: 0px;
+		    margin: 0px;
+		    background-color: grey;
+		  };
+		</style>
+	</head>
+
+	<body>
+        <script type="text/javascript" src="js/phaser.js"></script>
+
+        <!-- Prefabs -->
+				<script src="js/prefabs/Obstacle.js"></script>
+				<script src="js/Utils.js"></script>
+
+        <!-- Game States -->
+        <script src="js/states/BootState.js"></script>
+				<script src="js/states/PreloadState.js"></script>
+        <script src="js/states/LoadingState.js"></script>
+				<script src="js/states/MenuState.js"></script>
+        <script src="js/states/GameState.js"></script>
+				<script src="js/states/GameOverState.js"></script>
+
+
+				<script src="js/main.js"></script>
+
+				<style>
+				canvas {
+					position: relative;
+					left: 100px;
+					right: auto;
+				}
+				</style>
+	</body>
+</html>

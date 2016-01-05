@@ -1,0 +1,25 @@
+{
+    "assets": {
+        "title_image": {"type": "image", "source": "assets/images/title.png"},
+        "menu_background": {"type": "image", "source": "assets/images/background.png"},
+        "click2play" : {"type" : "image", "source" : "assets/images/click2play.png"},
+        "platformR" : {"type" : "image", "source" : "assets/images/PlatformR.png"},
+        "platformL" : {"type" : "image", "source" : "assets/images/PlatformL.png"},
+        "treeR" : {"type" : "spritesheet", "source" : "assets/images/treeR.png", "frame_width" : 38, "frame_height" : 28},
+        "treeL" : {"type" : "spritesheet", "source" : "assets/images/treeL.png", "frame_width" : 38, "frame_height" : 28},
+        "player" : {"type" : "spritesheet", "source" : "assets/images/player-run.png", "frame_width" : 32, "frame_height" : 32},
+        "jumpSound": {"type": "audio", "source": "assets/sounds/jump.wav"},
+        "scoreSound": {"type": "audio", "source": "assets/sounds/score.wav"},
+        "menuSound": {"type": "audio", "source": "assets/sounds/song.wav"}
+    },
+    "groups": [
+        "explosions",
+        "bombs",
+        "enemies",
+        "players"
+    ],
+    "map": {
+        "key": "level_tilemap",
+        "tilesets": ["map_tiles"]
+    }
+}

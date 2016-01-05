@@ -1,0 +1,43 @@
+- idserie : 00001
+  serieName : 'Better Call Saul'
+  director : ' Vince Gilligan, Peter Gould'
+  producer : ' Bob Odenkirk, Jonathan Banks, Rhea Seehorn'
+  pubYear : '2015-01-01'
+  serieDescription : 'The trials and tribulations of criminal lawyer, Saul Goodman, in the time leading up to establishing his strip-mall law office in Albuquerque, New Mexico.'
+  img : '/images/series/better-call-saul-1.jpg'
+  seasons :
+    idseason : 00001
+    seasonNo : 1
+    seasonName : 'Season One'
+    pubDate : '2005-01-01'
+    episodes :
+      idepisode : 00001
+      episodeNo : 1
+      episodeName : 'Episode One'
+      pubDate : '2015-01-01'
+      thumb : '/images/series/weeds-2.jpg'
+      urls :
+        idepisodeUrls : 00001
+        url : '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/9q4qzYrHVmI\" frameborder=\"0\" allowfullscreen></iframe>'
+
+- idserie : 00002
+  serieName : 'Breaking Bad'
+  director : ' Vince Gilligan'
+  producer : ' Bryan Cranston, Aaron Paul, Anna Gunn'
+  pubYear : '2008-01-01'
+  serieDescription : 'A chemistry teacher diagnosed with a terminal lung cancer teams up with his former student to cook and sell crystal meth.'
+  img : '/images/series/breaking-bad-1.jpg'
+  seasons :
+    idseason : 00002
+    seasonNo : 1
+    seasonName : 'Season One'
+    pubDate : '2005-01-01'
+    episodes :
+      idepisode : 00002
+      episodeNo : 1
+      episodeName : 'Episode One'
+      pubDate : '2015-01-01'
+      thumb : '/images/series/weeds-2.jpg'
+      urls :
+        idepisodeUrls : 00002
+        url : '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/9q4qzYrHVmI\" frameborder=\"0\" allowfullscreen></iframe>'
