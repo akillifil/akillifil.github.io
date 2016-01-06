@@ -28,7 +28,7 @@ gameObject.BootState.prototype.preload = function () {
       this.game.scale.maxHeight = 600;
       this.game.scale.forceOrientation(true);
       this.game.scale.pageAlignHorizontally = true;
-      this.game.scale.setScreenSize(true);
+      // this.game.scale.setScreenSize(true);
     }
 
 };

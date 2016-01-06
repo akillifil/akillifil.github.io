@@ -14,6 +14,9 @@ gameObject.GameState.prototype.init = function (level_data) {
 };
 
 gameObject.GameState.prototype.preload = function () {
+  console.log('Desktop : ' + this.game.device.desktop);
+  console.log('Android : ' + this.game.device.android);
+  console.log('IOS : ' + this.game.device.iOS);
   "use strict";
   this.game.jumpSound = this.game.add.audio('jumpSound');
   this.game.scoreSound = this.game.add.audio('scoreSound');
@@ -61,8 +64,9 @@ gameObject.GameState.prototype.create = function () {
     this.scoreText.fixedToCamera = true;
 
     this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
-    this.jumpKey = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    this.jumpKey.onDown.add(this.ninjaJump,this);
+    this.jumpKey = this.game.device.desktop ? this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) : null;
+    this.jumpKey == null ? this.input.onDown.add(this.ninjaJump,this) : this.jumpKey.onDown.add(this.ninjaJump,this);
+    console.log(this.jumpKey);
 
     this.obstacleTimer = this.game.time.create(false);
     this.obstacleTimer.start();
