@@ -1,6 +1,9 @@
 var gameObject = gameObject || {};
 
-var game = new Phaser.Game(280, 600, Phaser.CANVAS);
+var width = window.innerWidth * window.devicePixelRatio;
+var height = window.innerHeight * window.devicePixelRatio;
+
+var game = new Phaser.Game(280, 600, Phaser.CANVAS,'');
 game.state.add("BootState", new gameObject.BootState());
 game.state.add("PreloadState", new gameObject.PreloadState());
 game.state.add("LoadingState", new gameObject.LoadingState());

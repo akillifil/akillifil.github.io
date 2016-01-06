@@ -66,7 +66,6 @@ gameObject.GameState.prototype.create = function () {
     this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
     this.jumpKey = this.game.device.desktop ? this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR) : null;
     this.jumpKey == null ? this.input.onDown.add(this.ninjaJump,this) : this.jumpKey.onDown.add(this.ninjaJump,this);
-    console.log(this.jumpKey);
 
     this.obstacleTimer = this.game.time.create(false);
     this.obstacleTimer.start();
