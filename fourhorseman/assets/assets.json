@@ -1,0 +1,74 @@
+{
+	"assets": {
+		"title": {
+			"type": "image",
+			"source": "assets/720x405/fourhorseman-epic.png"
+		},
+		"onehorseman": {
+			"type": "image",
+			"source": "assets/720x405/onehorseman.png"
+		},
+		"twohorseman": {
+			"type": "image",
+			"source": "assets/720x405/twohorseman.png"
+		},
+		"threehorseman": {
+			"type": "image",
+			"source": "assets/720x405/threehorseman.png"
+		},
+		"fourhorseman": {
+			"type": "image",
+			"source": "assets/720x405/fourhorseman.png"
+		},
+		"just-two": {
+			"type": "image",
+			"source": "assets/720x405/just-two.png"
+		},
+		"wooow": {
+			"type": "image",
+			"source": "assets/720x405/wooow.png"
+		},
+		"asdasd": {
+			"type": "image",
+			"source": "assets/720x405/asdasd.png"
+		},
+		"dude": {
+			"type": "image",
+			"source": "assets/256x256/dude.png"
+		},
+		"yelling-dude": {
+			"type": "image",
+			"source": "assets/256x256/yelling-dude.png"
+		},
+		"star": {
+			"type": "image",
+			"source": "assets/256x256/star.png"
+		},
+		"just3": {
+			"type": "image",
+			"source": "assets/256x256/just3.png"
+		},
+		"dude": {
+			"type": "image",
+			"source": "assets/256x256/dude.png"
+		},
+		"yelling-asdasd": {
+			"type": "image",
+			"source": "assets/256x256/yelling-asdasd.png"
+		},
+		"rock": {
+			"type": "image",
+			"source": "assets/256x256/rock.png"
+		}
+	},
+	"groups": [
+		"explosions",
+		"bombs",
+		"enemies",
+		"players"
+	],
+	"map": {
+		"key": "level_tilemap",
+		"tilesets": ["map_tiles"]
+	}
+}
