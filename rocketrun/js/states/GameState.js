@@ -85,6 +85,7 @@ gameObject.GameState.prototype.preload = function () {
   this.game.rockets.enableBody = true;
 
   this.game.meteors = this.game.add.group();
+  this.game.fuels = this.game.add.group();
   this.game.rMCount = 2;
   this.game.bMCount = 2;
 
@@ -97,6 +98,9 @@ gameObject.GameState.prototype.create = function () {
     this.meteorTimer = this.game.time.create(false);
     this.meteorTimer.start();
     this.generateMeteors();
+    this.fuelTimer = this.game.time.create(false);
+    this.fuelTimer.start();
+    this.generateFuels();
 };
 
 gameObject.GameState.prototype.update = function () {
@@ -111,6 +115,15 @@ gameObject.GameState.prototype.update = function () {
   this.game.emitterB.emitParticle();
   this.game.emitterR.emitParticle();
   game.physics.arcade.collide(game.rockets,game.meteors);
+  game.physics.arcade.overlap(game.fuels,game.meteors, function(fuel,meteor){
+    console.log(fuel);
+    fuel.kill();
+  },null,this);
+
+  game.physics.arcade.overlap(game.fuels,game.rockets, function(fuel,meteor){
+    fuel.kill();
+  },null,this);
+
 };
 
 gameObject.GameState.prototype.generateMeteors = function () {
@@ -141,6 +154,30 @@ gameObject.GameState.prototype.generateMeteors = function () {
   }
   this.meteorTimer.add(Phaser.Timer.SECOND * this.game.rnd.realInRange(2, 4) , this.generateMeteors, this);
 };
+
+gameObject.GameState.prototype.generateFuels = function () {
+  "use strict";
+  // Red Fuel
+  if (this.game.rMCount < 4) {
+    var maxDistanceR = this.game.height;
+    var minDsitanceR = this.game.redRocket.height * 5;
+    var metDistanceR = this.game.rnd.integerInRange(minDsitanceR,maxDistanceR) * -1;
+    var rLorR = this.game.rnd.integerInRange(-5,4) >=0 ? "redSpawn1" : "redSpawn2";
+    this.game.redFuelPosition = (this.game.height + metDistanceR) * -1 ;
+    this.game.fuels.add(new gameObject.Fuel(this.game, this.game.guides[rLorR], this.game.redMetPosition, 'redBenzin'));
+  }
+  // Blue Fuel
+  if (this.game.bMCount < 4) {
+    var maxDistanceB = this.game.height * 2;
+    var minDsitanceB = this.game.blueRocket.height * 8;
+    var metDistanceB = this.game.rnd.integerInRange(minDsitanceB,maxDistanceB) * -1;
+    var bLorR = this.game.rnd.integerInRange(-5,4) >=0 ? "blueSpawn1" : "blueSpawn2";
+    this.game.blueFuelPosition = (this.game.height + metDistanceB) * -1;
+    this.game.fuels.add(new gameObject.Fuel(this.game, this.game.guides[bLorR], this.game.blueMetPosition, 'blueBenzin'));
+  }
+  this.fuelTimer.add(Phaser.Timer.SECOND * this.game.rnd.realInRange(4, 8) , this.generateFuels, this);
+};
+
 
 gameObject.GameState.prototype.toggleTrack = function (pointer) {
     "use strict";
