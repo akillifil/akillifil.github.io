@@ -16,6 +16,9 @@ gameObject.GameState.prototype.constructor = gameObject.GameState;
 // red dark : ee273a
 // red light : d86456
 
+// bg 213cb0 33,60,176
+// cizgi 7FBAFC 127,186,252
+
 gameObject.GameState.prototype.preload = function () {
   "use strict";
   this.game.guides = {
@@ -27,27 +30,26 @@ gameObject.GameState.prototype.preload = function () {
     "redSpawn1" : ((this.game.width * 3/4) + (this.game.width / 2)) / 2,
     "redSpawn2" : ((this.game.width * 3/4) + this.game.width ) / 2
   }
-  this.game.bg = this.game.add.image(0,0,'bg');
+  // this.game.bg = this.game.add.image(0,0,'bg');
+  this.game.stage.backgroundColor = 0x213cb0;
   // Divede Screen
   this.game.divisionLine = this.game.add.graphics();
   this.game.divisionLine.moveTo(this.game.guides.middle, 0);
-  this.game.divisionLine.lineStyle(8, 0xd3d1e2);
+  this.game.divisionLine.lineStyle(12, 0x7FBAFC);
   this.game.divisionLine.lineTo(this.game.width / 2, this.game.height);
 
   // Guide Lines For Rockets
-  // this.game.divisionLine.lineStyle(3, 0xd3d1e2);
-  // this.game.divisionLine.moveTo(this.game.guides.redMid, 0);
-  // this.game.divisionLine.lineTo(this.game.guides.redMid, this.game.height);
-  //
-  // this.game.divisionLine.moveTo(this.game.guides.blueMid, 0);
-  // this.game.divisionLine.lineTo(this.game.guides.blueMid, this.game.height);
+  this.game.divisionLine.lineStyle(3, 0x7FBAFC);
+  this.game.divisionLine.moveTo(this.game.guides.redMid, 0);
+  this.game.divisionLine.lineTo(this.game.guides.redMid, this.game.height);
+
+  this.game.divisionLine.moveTo(this.game.guides.blueMid, 0);
+  this.game.divisionLine.lineTo(this.game.guides.blueMid, this.game.height);
 
   // Add Rockets
   this.game.rockets = this.game.add.group();
-  this.game.blueRocket = this.game.add.sprite(this.game.guides.blueSpawn1,this.game.height - 600,'blueRocket');
-  this.game.blueRocket.scale.setTo(0.22);
-  this.game.blueRocket.anchor.setTo(0.5);
-  this.game.blueRocket.track = "blueSpawn1";
+  this.game.blueRocket = new gameObject.Rocket(this.game,this.game.guides.blueSpawn1,this.game.height * 3/4,'blueRocket',"blueSpawn1")//this.game.add.sprite(this.game.guides.blueSpawn1,this.game.height - 600,'blueRocket');
+  this.game.rockets.add(this.game.blueRocket);
   this.game.emitterB = game.add.emitter(0, 0, 20);
   this.game.emitterB.makeParticles('blueParticle');
   this.game.emitterB.x = 0;
@@ -58,13 +60,10 @@ gameObject.GameState.prototype.preload = function () {
   this.game.emitterB.maxParticleSpeed = new Phaser.Point(400,2000);
   this.game.emitterB.minParticleSpeed = new Phaser.Point(-400,500);
   this.game.blueRocket.addChild(this.game.emitterB);
-
-
   this.game.rockets.add(this.game.blueRocket);
-  this.game.redRocket = this.game.add.sprite(this.game.guides.redSpawn2,this.game.height - 600,'redRocket');
-  this.game.redRocket.scale.setTo(0.22);
-  this.game.redRocket.anchor.setTo(0.5);
-  this.game.redRocket.track = "redSpawn2";
+
+
+  this.game.redRocket = new gameObject.Rocket(this.game,this.game.guides.redSpawn2,this.game.height * 3/4,'redRocket',"redSpawn2");
   this.game.rockets.add(this.game.redRocket);
   this.game.emitterR = game.add.emitter(0, 0, 20);
   this.game.emitterR.makeParticles('redParticle');
@@ -75,7 +74,6 @@ gameObject.GameState.prototype.preload = function () {
   this.game.emitterR.frequency = 0;
   this.game.emitterR.maxParticleSpeed = new Phaser.Point(400,2000);
   this.game.emitterR.minParticleSpeed = new Phaser.Point(-400,500);
-
   this.game.redRocket.addChild(this.game.emitterR);
 
 
@@ -106,15 +104,18 @@ gameObject.GameState.prototype.create = function () {
 gameObject.GameState.prototype.update = function () {
     "use strict";
     var game = this.game;
+    game.blueRocket.play('run');
+    game.redRocket.play('run');
+
     game.meteors.forEach(function (meteor) {
     if (meteor.y > game.height) {
       meteor.destroy();
       // meteor.key === "redMeteor" ? game.rMCount -= 1 : game.bMCount -= 1;
     }
   });
-  this.game.emitterB.emitParticle();
-  this.game.emitterR.emitParticle();
-  game.physics.arcade.collide(game.rockets,game.meteors);
+  // this.game.emitterB.emitParticle();
+  // this.game.emitterR.emitParticle();
+  game.physics.arcade.overlap(game.rockets,game.meteors,this.gameOver,null,this);
   game.physics.arcade.overlap(game.fuels,game.meteors, function(fuel,meteor){
     console.log(fuel);
     fuel.kill();
@@ -179,25 +180,32 @@ gameObject.GameState.prototype.generateFuels = function () {
 };
 
 
-gameObject.GameState.prototype.toggleTrack = function (pointer) {
+gameObject.GameState.prototype.toggleTrack = function (pointer,pointer1) {
     "use strict";
+    console.log(pointer);
+    console.log(this.prototype);
     if (pointer.x < this.game.width / 2) {
       console.log("Toggle Blue Track");
       var rocket = this.game.blueRocket;
       switch (rocket.track) {
         case "blueSpawn1":
+            console.log(rocket.angle);
             if (rocket.x <= this.game.guides.blueSpawn2) {
-              var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.blueSpawn2}, 500, Phaser.Easing.Cubic.In, true);
-              var rotAnim = this.game.add.tween(rocket).to( { angle : 45}, 280, Phaser.Easing.Linear.Out, true);
+              var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.blueSpawn2}, 450, Phaser.Easing.Cubic.InOut, true);
+            if (rocket.angle === 0) {
+              var rotAnim = this.game.add.tween(rocket).to( { angle : 40}, 200, Phaser.Easing.Linear.Out, true);
               rotAnim.yoyo(true,0);
+            }
             }
             rocket.track = "blueSpawn2"
           break;
         case "blueSpawn2":
             if (rocket.x >= this.game.guides.blueSpawn1) {
-              var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.blueSpawn1}, 500, Phaser.Easing.Cubic.In, true);
-              var rotAnim = this.game.add.tween(rocket).to( { angle : -45}, 280, Phaser.Easing.Linear.Out, true);
-              rotAnim.yoyo(true,0);
+              var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.blueSpawn1}, 450, Phaser.Easing.Cubic.InOut, true);
+              if (rocket.angle === 0) {
+                var rotAnim = this.game.add.tween(rocket).to( { angle : -40}, 200, Phaser.Easing.Linear.Out, true);
+                rotAnim.yoyo(true,0);
+              }
             }
             rocket.track = "blueSpawn1";
           break;
@@ -208,21 +216,48 @@ gameObject.GameState.prototype.toggleTrack = function (pointer) {
         var rocket = this.game.redRocket;
         switch (rocket.track) {
           case "redSpawn1":
-              if (rocket.x <= this.game.guides.redSpawn2) {
-                var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.redSpawn2}, 500, Phaser.Easing.Cubic.In, true);
-                var rotAnim = this.game.add.tween(rocket).to( { angle : 45}, 250, Phaser.Easing.Linear.Out, true);
+              if (rocket.x <= this.game.guides.redSpawn2 && rocket.x == this.game.guides.redSpawn1) {
+                var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.redSpawn2}, 450, Phaser.Easing.Cubic.InOut, true);
+                if (true) {
+                var rotAnim = this.game.add.tween(rocket).to( { angle : 40}, 200, Phaser.Easing.Cubic.InOut, true);
                 rotAnim.yoyo(true,0);
+                }
               }
               rocket.track = "redSpawn2";
             break;
           case "redSpawn2":
-              if (rocket.x >= this.game.guides.redSpawn1) {
-                var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.redSpawn1}, 500, Phaser.Easing.Cubic.In, true);
-                var rotAnim = this.game.add.tween(rocket).to( { angle : -45}, 250, Phaser.Easing.Linear.Out, true);
+              if (rocket.x >= this.game.guides.redSpawn1 && rocket.x == this.game.guides.redSpawn2) {
+                var moveAnim = this.game.add.tween(rocket).to( { x: this.game.guides.redSpawn1}, 450, Phaser.Easing.Cubic.InOut, true);
+                if (true) {
+                var rotAnim = this.game.add.tween(rocket).to( { angle : -40}, 200, Phaser.Easing.Cubic.InOut, true);
                 rotAnim.yoyo(true,0);
+                }
               }
               rocket.track = "redSpawn1";
             break;
         }
     }
+};
+
+gameObject.GameState.prototype.gameOver = function () {
+  "use strict";
+  console.log(this);
+  this.game.paused = true;
+  var unpause = function (event){
+        // Only act if paused
+        if(this.game.paused){
+          this.game.paused = false;
+          this.game.state.restart();
+        console.log(this);
+          }
+        else{
+            this.game.paused = false;
+            }
+      };
+
+  var pause_label = this.game.add.text(100, 20, 'Restart', { font: '128px Arial', fill: '#fff' });
+  pause_label.inputEnabled = true;
+  pause_label.events.onInputDown.add(unpause,this);
+  this.game.input.onDown.add(unpause, this);
+
 };

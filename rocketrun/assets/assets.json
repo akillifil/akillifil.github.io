@@ -2,43 +2,43 @@
 	"assets": {
 		"bg": {
 			"type": "image",
-			"source": "assets/bg.png"
+			"source": "assets/blue/back.png"
 		},
 		"blueRocket": {
-			"type": "image",
-			"source": "assets/blue-rocket.png"
+			"type": "spritesheet",
+			"source": "assets/blue/bluerocket.png",
+			"frame_width": 512,
+			"frame_height" : 820
 		},
 		"redRocket": {
-			"type": "image",
-			"source": "assets/red-rocket.png"
+			"type": "spritesheet",
+			"source": "assets/red/redrocket.png",
+			"frame_width": 512,
+			"frame_height" : 820
 		},
 		"blueMeteor": {
 			"type": "image",
-			"source": "assets/meteorblue.png"
+			"source": "assets/blue/moon_blue.png"
 		},
 		"redMeteor": {
 			"type": "image",
-			"source": "assets/meteorred.png"
+			"source": "assets/red/moon_red.png"
 		},
 		"blueBenzin": {
 			"type": "image",
-			"source": "assets/benzinblue.png"
+			"source": "assets/blue/fuel_blue.png"
 		},
 		"redBenzin": {
 			"type": "image",
-			"source": "assets/benzinred.png"
-		},
-		"divisionLine": {
-			"type": "image",
-			"source": "assets/div4px.png"
+			"source": "assets/red/fuel_red.png"
 		},
 		"redParticle": {
 			"type": "image",
-			"source": "assets/red-particle.png"
+			"source": "assets/old/red-particle.png"
 		},
 		"blueParticle": {
 			"type": "image",
-			"source": "assets/blue-particle.png"
+			"source": "assets/old/blue-particle.png"
 		}
 }
 }
